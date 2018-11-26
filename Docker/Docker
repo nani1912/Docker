@@ -1,0 +1,30 @@
+This document is the function of Docker and how it works 
+
+Images:
+
+We have twotypes of images 1. We need to create y using dockerfiles 2.We have a docker hub featching from there (globaly)
+these images are only readonly files we can,t do any thing from these 
+
+Syntex:
+docker images ## shows all images 
+
+Containers:
+
+--> We are creating these by using docker images and running in local meachine
+--> once we create any file or else in any container it will show at that movement once we exit means we can't see that again from same conatiner we run 
+    means, the file is save in container but it can't push to the releated image
+--> so, for this reason we are using docker commit function here it will create a new image from on whivh container we created files
+--> 
+below are the docker run commands releated to containers:
+docker run -ti  <image-name> <what we want to run> (shell, printing's, sleep commands) ## Running an docker image
+docker ps ## Wich is shows all runing containers
+docker ps --format $FORMAT ## Here thinsg showing in vertically insted of horizontal
+docker ps -l ## we can see the most recent exited container
+docker commit <last exited image-name/ container ID> ## creating new image from last exited container
+docker tag <new image-name> <we can replace here what name we want for newly created image>
+docker run -d -ti <image-name> ## we can run the caonainer in background mode 
+docker attach <baground running image-name (we can see this image by docker ps command)> ## we can jump into baground running container 
+	 press ctrl+q+p means we can exit and jump back again into running container without exit
+docker exec -ti <running container name> bash ## here we can excute another process on running container 
+docker run --memory max-alowed-sixe <image-name> command ## allocation of memory 
+docker run --cpu-qouta ## genrelly we can use this formate

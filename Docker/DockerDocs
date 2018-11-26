@@ -1,0 +1,55 @@
+Containers vs. virtual machines:
+
+Virtual machines run guest operating systems—note the OS layer in each box. 
+This is resource intensive, and the resulting disk image and application state is an entanglement of OS settings, system-installed dependencies, 
+OS security patches, and other easy-to-lose, hard-to-replicate ephemera.
+
+Containers can share a single kernel, and the only information that needs to be in a container image is the executable and its package dependencies, 
+which never need to be installed on the host system. These processes run like native processes, 
+and you can manage them individually by running commands like docker ps—just like you would run ps on Linux to see active processes. 
+Finally, because they contain all their dependencies, there is no configuration entanglement; a containerized app “runs anywhere.”
+
+
+
+Docker Working Process:
+
+1. Install Docker ## sudo yum install -y docker 
+2. Start the docker service ## service docker start
+3. add the user into the docker group it will give root access ## sudo usermod -a -G docker "UserName" 
+4. Next re-login the server ## It will give us root access
+5. Run a simple hello-world ## docker run hello-world quick test run to make sure you’re all set up
+
+
+Containers: (With a docker file)
+
+Docker achieves this by creating safe, LXC (i.e. Linux Containers) based environments for applications called “docker containers”. 
+These containers are created using docker images, which can be built either by executing commands manually or automatically through Dockerfiles.
+
+
+Dockerfiles: 
+
+Each Dockerfile is a script, composed of various commands (instructions) and arguments listed successively to automatically perform actions on a base image in order to create (or form) a new one. 
+They are used for organizing things and greatly help with deployments by simplifying the process start-to-finish.
+
+Dockerfile Commands (Instructions):
+
+ADD: The ADD command gets two arguments: a source and a destination. 
+	It basically copies the files from the source on the host into the container's own filesystem at the set destination. 
+	If, however, the source is a URL (e.g. http://github.com/user/file/), 
+	then the contents of the URL are downloaded and placed at the destination.
+
+# Usage: ADD [source directory or URL] [destination directory]
+ADD /my_app_folder /my_app_folder
+
+
+CMD: The command CMD, similarly to RUN, can be used for executing a specific command. However, 
+	unlike RUN it is not executed during build, but when a container is instantiated using the image being built. 
+	Therefore, it should be considered as an initial, default command that gets executed (i.e. run) with the creation of containers based on the image.
+
+# Usage 1: CMD application "argument", "argument", ..
+CMD "echo" "Hello docker!"
+
+Clear Clarification about Docker & Dockerfiles & build images:
+https://www.digitalocean.com/community/tutorials/docker-explained-using-dockerfiles-to-automate-building-of-images
+
+
