@@ -1,0 +1,1 @@
+In short: Both are similar with one key difference: git fetch only downloads latest changes where as git pull also merges them.
