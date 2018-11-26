@@ -1,0 +1,15 @@
+Dockerflow is a specification for automated building, testing and publishing of docker web application images that comply to a common set of behaviours. Compliant images are simpler to deploy, monitor and manage in production.
+
+
+1. A Code push triggers automated image building
+2. CI builds and tests the image
+3. Tested images are published to Docker Hub.
+4. Images are pulled from Docker Hub to be used
+
++-(1)--+         +-(2)-------------+        +-(3)-------+        +-(4)--------+
+  | Code |         |  CI builds and  |        |   Docker  |        | Container  |
+  | Push | ------> | tests container | -----> |    Hub    | -----> | Deployment |
+  +------+         +-----------------+        +-----------+        +------------+
+
+
+
